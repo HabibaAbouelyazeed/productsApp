@@ -1,0 +1,31 @@
+<div class="card position-relative">
+    <img [src]="productItem.thumbnail" class="card-img-top" alt="product img" style="height: 11rem;">
+    <div *ngIf="productItem.stock > 0; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+        <span class="bg-success rounded-pill px-2 position-absolute m-2 text-white">In Stock</span>
+    </ng-template>
+    <ng-template #elseBlock>
+        <span class="bg-danger rounded-pill px-2 position-absolute m-2 text-white">Out of stock</span>
+    </ng-template>
+    <div class="card-body">
+        <h5 class="card-title py-1">{{productItem.title}}</h5>
+        <p>{{productItem.price | calcDiscount:productItem.discountPercentage |
+            currency:'USD':'symbol'}} <span class="text-decoration-line-through text-black-50 ps-1">{{productItem.price
+                | currency:'USD':'symbol'}}</span></p>
+        <p class="card-text text-black-50 product-details">{{productItem.description}}</p>
+        <div class="mb-4">
+            <fa-icon [icon]="faStar" class="" [ngClass]="{'checked': productItem.rating >= 1}"></fa-icon>
+            <fa-icon [icon]="faStar" class="" [ngClass]="{'checked': productItem.rating >= 2}"></fa-icon>
+            <fa-icon [icon]="faStar" class="" [ngClass]="{'checked': productItem.rating >= 3}"></fa-icon>
+            <fa-icon [icon]="faStar" class="" [ngClass]="{'checked': productItem.rating >= 4}"></fa-icon>
+            <fa-icon [icon]="faStar" class="" [ngClass]="{'checked': productItem.rating >= 5}"></fa-icon>
+            <span class="ms-1 text-black-50">{{productItem.rating}}</span>
+        </div>
+        <div class="btns d-flex justify-content-center gap-2">
+            <button class="btn btn-dark" (click)="getId(productItem.id)">Details</button>
+            <button routerLink="" class="btn btn-dark" [attr.disabled]=" productItem.stock == 0 ? 'disabled' : null">
+                <fa-icon [icon]="faCartShopping"></fa-icon>
+            </button>
+        </div>
+    </div>
+</div>

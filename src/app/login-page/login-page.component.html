@@ -1,0 +1,29 @@
+<section class="container">
+    <h2 class="text-center fw-bold mb-5">Login</h2>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-5">
+            <form class="d-flex flex-column" #loginFrom="ngForm" (ngSubmit)="handleSubmit(loginFrom)">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+                        required email ngModel #email="ngModel">
+                    <div id="emailHelp" class="form-text text-danger" *ngIf="email.touched && email.invalid">
+                        <p *ngIf="email.errors?.['required']">This field is required</p>
+                        <p *ngIf="email.errors?.['email']">Invalid email format</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password"
+                        aria-describedby="passwordHelp" required ngModel #password="ngModel">
+                    <div id="passwordHelp" class="form-text text-danger" *ngIf="password.touched && password.invalid">
+                        This field is required</div>
+                </div>
+                <button type="submit" class="btn btn-dark mx-auto" [disabled]="loginFrom.invalid">Submit</button>
+            </form>
+            <div class="mt-3 text-center">
+                <a routerLink="/register">Don't have an account? Register</a>
+            </div>
+        </div>
+    </div>
+</section>

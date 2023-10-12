@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "lab-3-productsApp": {
+    "productsApp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -25,9 +25,12 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -60,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "lab-3-productsApp:build:production"
+              "browserTarget": "productsApp:build:production"
             },
             "development": {
-              "browserTarget": "lab-3-productsApp:build:development"
+              "browserTarget": "productsApp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "lab-3-productsApp:build"
+            "browserTarget": "productsApp:build"
           }
         },
         "test": {
