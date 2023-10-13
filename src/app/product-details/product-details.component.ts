@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../interface/product';
-import ProductData from '../../assets/products-list.json';
 import {faStar} from  '@fortawesome/free-solid-svg-icons'
+import { ProductsApiService } from '../services/products-api.service';
+import { CartService } from '../services/cart.service';
+// import ProductData from '../../assets/products-list.json';
 
 @Component({
   selector: 'app-product-details',
@@ -10,19 +12,27 @@ import {faStar} from  '@fortawesome/free-solid-svg-icons'
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent {
-  products: Product[] = ProductData;
-  productDetails : any;
+  productDetails !: Product;
   faStar = faStar;
-  constructor(private activatedRoute: ActivatedRoute) {}
 
-
+  cart: Product[] = [];
+  constructor(private activatedRoute: ActivatedRoute, private productsService: ProductsApiService, private cartService: CartService ) {}
 
   ngOnInit() {
-    console.log('url id: ', +this.activatedRoute.snapshot.params['id']);
-
-    this.productDetails = this.products.find(
-      (product) => product.id === +this.activatedRoute.snapshot.params['id']
+    let id = this.activatedRoute.snapshot.params['id']
+    this.productsService.getProductDetails(id).subscribe(
+      (data) => {this.productDetails = data},
+      (error) => console.log(error)
     );
-    console.log(this.productDetails);
+    
+    this.cartService.getCart().subscribe(
+      (data) => this.cart = data,
+      (error) => console.log(error)
+    );
+  }
+
+  addToCart(){
+    this.cart.push(this.productDetails)
+    this.cartService.setCart(this.cart)
   }
 }

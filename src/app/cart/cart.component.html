@@ -1,1 +1,45 @@
-<h2 class="text-center fw-bold">Cart Page</h2>
+<div class="container">
+    <h2 class="text-center fw-bold mb-5">Cart</h2>
+    <div class="row border-bottom border-secondary-subtle">
+        <div class="col-5">
+            <p>Discription</p>
+        </div>
+        <div class="col-3">
+            <p>Quantity</p>
+        </div>
+        <div class="col-2">
+            <p>Remove</p>
+        </div>
+        <div class="col-2">
+            <p>Price</p>
+        </div>
+    </div>
+    <div class="row py-3 border-bottom border-secondary-subtle" *ngFor="let cartItem of cart; index as i">
+        <div class="col-5 d-flex">
+            <figure class="w-25 me-2">
+                <img [src]="cartItem.thumbnail" class="img-fluid" alt="product image">
+            </figure>
+            <div>
+                <h5>{{cartItem.title}}</h5>
+                <p>Brand: <span>{{cartItem.brand}}</span></p>
+            </div>
+        </div>
+        <div class="col-3">
+            <span class="btn btn-secondary rounded-end-0" (click)="decreaseQuantity(quantity,i)">-</span>
+            <span class="px-3 btn rounded-0 border border-1" #quantity>1</span>
+            <span class="btn btn-success rounded-start-0" (click)="increaseQuantity(quantity,i)">+</span>
+            <p class="text-black-50 mt-2">left in stock: {{cartItem.stock}}</p>
+        </div>
+        <div class="col-2">
+            <fa-icon [icon]="faTrashCan" class="btn btn-dark fs-5" (click)="removeProduct(i,quantity)"></fa-icon>
+        </div>
+        <div class="col-2">
+            <p>{{cartItem.price | currency:'USD':'symbol'}}</p>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-2 border border-1 border-secondary-subtle pt-2">
+            <p>Total: {{total | currency:'USD':'symbol'}}</p>
+        </div>
+    </div>
+</div>

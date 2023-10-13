@@ -23,7 +23,7 @@
         </div>
         <div class="btns d-flex justify-content-center gap-2">
             <button class="btn btn-dark" (click)="getId(productItem.id)">Details</button>
-            <button routerLink="" class="btn btn-dark" [attr.disabled]=" productItem.stock == 0 ? 'disabled' : null">
+            <button class="btn btn-dark" (click)="addToCart()" [attr.disabled]=" productItem.stock == 0 ? 'disabled' : null">
                 <fa-icon [icon]="faCartShopping"></fa-icon>
             </button>
         </div>

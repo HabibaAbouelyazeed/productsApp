@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // Pipe
 import { CalcDiscountPipe } from './calc-discount.pipe';
@@ -20,7 +21,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartComponent } from './cart/cart.component';
 import { FooterComponent } from './footer/footer.component';
-
 
 @NgModule({
   declarations: [
@@ -42,7 +42,8 @@ import { FooterComponent } from './footer/footer.component';
     NgbModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
