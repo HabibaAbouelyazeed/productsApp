@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { faHome, faCartShopping} from '@fortawesome/free-solid-svg-icons'
-import { CartService } from '../services/cart.service';
+import { CartService } from '../shared/services/cart.service';
+import { Product } from '../interface/product';
 
 @Component({
   selector: 'app-header',
@@ -11,13 +12,13 @@ export class HeaderComponent {
   faHome = faHome;
   faCartShopping = faCartShopping;
 
-  count: number = 0;
-
+  cartCount : number = 0 ;
+  
   constructor(private cartServies: CartService){}
 
   ngOnInit(){
-    this.cartServies.getCart().subscribe(
-      (data) => this.count = data.length,
+    this.cartServies.getCartCount().subscribe(
+      (data) => this.cartCount = data,
       (error) => console.log(error)
     );
   }

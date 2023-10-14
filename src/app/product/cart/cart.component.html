@@ -25,13 +25,13 @@
             </div>
         </div>
         <div class="col-3">
-            <span class="btn btn-secondary rounded-end-0" (click)="decreaseQuantity(quantity,i)">-</span>
-            <span class="px-3 btn rounded-0 border border-1" #quantity>1</span>
-            <span class="btn btn-success rounded-start-0" (click)="increaseQuantity(quantity,i)">+</span>
+            <span class="btn btn-secondary rounded-end-0" (click)="decreaseQuantity(cartItem, i)">-</span>
+            <span class="px-3 btn rounded-0 border border-1" #quantity>{{cartItem.quantity}}</span>
+            <span class="btn btn-success rounded-start-0" (click)="increaseQuantity(cartItem)">+</span>
             <p class="text-black-50 mt-2">left in stock: {{cartItem.stock}}</p>
         </div>
         <div class="col-2">
-            <fa-icon [icon]="faTrashCan" class="btn btn-dark fs-5" (click)="removeProduct(i,quantity)"></fa-icon>
+            <fa-icon [icon]="faTrashCan" class="btn btn-dark fs-5" (click)="removeProduct(i)"></fa-icon>
         </div>
         <div class="col-2">
             <p>{{cartItem.price | currency:'USD':'symbol'}}</p>

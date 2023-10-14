@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductsListComponent } from './products-list/products-list.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
+import { ProductsListComponent } from './product/products-list/products-list.component';
+import { RegisterPageComponent } from './auth/register-page/register-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { CartComponent } from './cart/cart.component';
+import { LoginPageComponent } from './auth/login-page/login-page.component';
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
+import { CartComponent } from './product/cart/cart.component';
+import { authGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
   },
   {
     path: "cart",
-    component: CartComponent
+    component: CartComponent,
+    canActivate: [authGuard]
   },
   {
     path: "**",

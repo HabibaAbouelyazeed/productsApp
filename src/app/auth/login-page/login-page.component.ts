@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -7,8 +8,14 @@ import { Component } from '@angular/core';
 })
 export class LoginPageComponent {
 
+
+  constructor(private router: Router){
+
+  }
+
   handleSubmit(form: any){
-    console.log(form);
-    
+    // console.log(form);
+    sessionStorage.setItem("auth", "Token");
+    this.router.navigate(['']);
   }
 }
