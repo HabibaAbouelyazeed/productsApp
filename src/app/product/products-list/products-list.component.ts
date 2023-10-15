@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Product } from '../../interface/product';
+import { Product } from '../../shared/interface/product';
 import { Router } from '@angular/router';
 import {ProductsApiService} from '../../shared/services/products-api.service'
-// import ProductData from '../../assets/products-list.json';
 
 
 @Component({

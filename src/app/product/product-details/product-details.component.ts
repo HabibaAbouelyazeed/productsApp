@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../../interface/product';
+import { Product } from '../../shared/interface/product';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { ProductsApiService } from '../../shared/services/products-api.service';
 import { CartService } from '../../shared/services/cart.service';
-// import ProductData from '../../assets/products-list.json';
 
 @Component({
   selector: 'app-product-details',
@@ -15,12 +14,13 @@ export class ProductDetailsComponent {
   productDetails!: Product;
   faStar = faStar;
 
+  
   cart: Product[] = [];
   cartCount: number = 0;
   constructor(
     private activatedRoute: ActivatedRoute,
     private productsService: ProductsApiService,
-    private cartService: CartService
+    private cartService: CartService,
   ) {}
 
   ngOnInit() {
@@ -41,6 +41,7 @@ export class ProductDetailsComponent {
       (data) => (this.cartCount = data),
       (error) => console.log(error)
     );
+
   }
 
   addToCart() {

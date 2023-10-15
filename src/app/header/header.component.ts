@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { faHome, faCartShopping} from '@fortawesome/free-solid-svg-icons'
 import { CartService } from '../shared/services/cart.service';
-import { Product } from '../interface/product';
+import { Product } from '../shared/interface/product';
 
 @Component({
   selector: 'app-header',

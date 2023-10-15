@@ -13,7 +13,11 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,7 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     NotFoundComponent,
     FooterComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,8 +35,16 @@ import { FooterComponent } from './footer/footer.component';
     AuthModule,
     ProductModule,
     SharedModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+   },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

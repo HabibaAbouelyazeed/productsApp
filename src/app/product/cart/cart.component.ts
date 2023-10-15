@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Product } from '../../interface/product';
+import { Product } from '../../shared/interface/product';
 import { CartService } from '../../shared/services/cart.service';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 

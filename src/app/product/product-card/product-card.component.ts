@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from '../../interface/product';
+import { Product } from '../../shared/interface/product';
 import { faStar, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { CartService } from '../../shared/services/cart.service';
 
